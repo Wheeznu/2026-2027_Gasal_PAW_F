@@ -19,7 +19,7 @@ foreach ($height as $name => $val) {
 echo "<br>";
 
 // 4.2
-$weight = array("Andy" => "70", "Barry" => "65", "Charlie" => "75");
+$weight = ["Andy" => "70", "Barry" => "65", "Charlie" => "75"];
 
 echo 'weight = ';
 var_dump($weight);

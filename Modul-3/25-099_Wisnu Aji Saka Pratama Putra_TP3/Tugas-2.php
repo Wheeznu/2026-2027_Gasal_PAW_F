@@ -1,10 +1,12 @@
 <?php
 // 2.1
-$fruits = array("Avocado", "Blueberry", "Cherry");
+$fruits = ["Avocado", "Blueberry", "Cherry"];
+$fruits_baru = ["Durian", "Apple", "Orange", "Strawberry", "Watermelon"];
+$fruits = array_merge($fruits, $fruits_baru);
 
-for ($i = 1; $i <= 5; $i++) {
-    array_push($fruits, "Buah Tambahan " . $i);
-}
+// for ($i = 1; $i <= 5; $i++) {
+//     array_push($fruits, "Buah Tambahan " . $i);
+// }
 
 
 echo "Panjang array saat ini: " . count($fruits) . "<br><br>";
@@ -19,7 +21,7 @@ echo "<br>";
 
 // 2.2
 
-$vegies = array("Carrot", "Broccoli", "Spinach");
+$vegies = ["Carrot", "Broccoli", "Spinach"];
 
 for ($x = 0; $x < count($vegies); $x++) {
     echo $vegies[$x];

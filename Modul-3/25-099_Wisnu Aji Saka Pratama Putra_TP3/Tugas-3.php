@@ -22,7 +22,7 @@ var_dump($height);
 echo "<br>Nilai dengan indeks terakhir setelah dihapus: " . $height["Harry"] . "<br><br>";
 
 // 3.2
-$weight = array("Andy" => "70", "Barry" => "65", "Charlie" => "75");
+$weight = ["Andy" => "70", "Barry" => "65", "Charlie" => "75"];
 
 
 echo 'weight = ';

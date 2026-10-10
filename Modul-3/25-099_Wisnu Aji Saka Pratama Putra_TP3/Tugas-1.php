@@ -1,6 +1,6 @@
 <?php
 // 1.1
-$fruits = array("Avocado", "Blueberry", "Cherry");
+$fruits = ["Avocado", "Blueberry", "Cherry"];
 array_push($fruits, "Durian", "Elderberry", "Fig", "Grape", "Honeydew");
 
 var_dump($fruits);

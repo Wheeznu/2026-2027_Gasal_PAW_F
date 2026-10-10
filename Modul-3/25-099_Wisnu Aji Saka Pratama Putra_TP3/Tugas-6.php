@@ -5,9 +5,9 @@
 $buah = ["Apel", "Pisang"];
 array_push($buah, "Jeruk", "Mangga");
 
-echo "1. Hasil array_push():\n";
+echo "1. Hasil array_push():<br>";
 print_r($buah);
-echo "\n" . str_repeat("-", 40) . "\n\n";
+echo "<br><br>";
 
 
 // 2. array_merge() - Menggabungkan dua atau lebih array
@@ -15,9 +15,9 @@ $array1 = ["Merah", "Hijau"];
 $array2 = ["Biru", "Kuning"];
 $hasil_merge = array_merge($array1, $array2);
 
-echo "2. Hasil array_merge():\n";
+echo "2. Hasil array_merge():<br>";
 print_r($hasil_merge);
-echo "\n" . str_repeat("-", 40) . "\n\n";
+echo "<br><br>";
 
 
 // 3. array_values() - Mengambil semua nilai dan mereset index numerik
@@ -28,18 +28,18 @@ $asosiatif = [
 ];
 $hasil_values = array_values($asosiatif);
 
-echo "3. Hasil array_values():\n";
+echo "3. Hasil array_values():<br>";
 print_r($hasil_values);
-echo "\n" . str_repeat("-", 40) . "\n\n";
+echo "<br><br>";
 
 
 // 4. array_search() - Mencari nilai dan mengembalikan key/index-nya
 $angka = [10, 25, 50, 75, 100];
 $key = array_search(50, $angka);
 
-echo "4. Hasil array_search() [Mencari angka 50]:\n";
-echo "Ditemukan pada index: " . $key . "\n";
-echo "\n" . str_repeat("-", 40) . "\n\n";
+echo "4. Hasil array_search() [Mencari angka 50]:<br>";
+echo "Ditemukan pada index: " . $key . "<br>";
+echo "<br><br>";
 
 
 // 5. array_filter() - Menyaring elemen array berdasarkan kondisi (callback)
@@ -49,9 +49,9 @@ $genap = array_filter($nomor, function ($n) {
     return $n % 2 === 0;
 });
 
-echo "5. Hasil array_filter() [Angka Genap]:\n";
+echo "5. Hasil array_filter() [Angka Genap]:<br>";
 print_r($genap);
-echo "\n" . str_repeat("-", 40) . "\n\n";
+echo "<br><br>";
 
 
 // 6. FUNGSI SORTING PADA SEIAP JENIS ARRAY
@@ -67,11 +67,11 @@ sort($sort_asc);
 $sort_desc = $data_angka;
 rsort($sort_desc);
 
-echo "6A. Sorting Indexed Array:\n";
-echo "Origin: " . implode(", ", $data_angka) . "\n";
-echo "sort()  (Ascending) : " . implode(", ", $sort_asc) . "\n";
-echo "rsort() (Descending): " . implode(", ", $sort_desc) . "\n";
-echo "\n" . str_repeat("-", 40) . "\n\n";
+echo "6A. Sorting Indexed Array:<br>";
+echo "Origin: " . implode(", ", $data_angka) . "<br>";
+echo "sort()  (Ascending) : " . implode(", ", $sort_asc) . "<br>";
+echo "rsort() (Descending): " . implode(", ", $sort_desc) . "<br>";
+echo "<br><br>";
 
 
 // B. Associative Array (Array Berpasangan Key => Value)
@@ -98,15 +98,15 @@ arsort($arsort_val);
 $krsort_key = $nilai_siswa;
 krsort($krsort_key);
 
-echo "6B. Sorting Associative Array:\n";
-echo "asort() [Berdasarkan Nilai Ascending]:\n";
+echo "6B. Sorting Associative Array:<br>";
+echo "asort() [Berdasarkan Nilai Ascending]:<br>";
 print_r($asort_val);
 
-echo "ksort() [Berdasarkan Nama/Key Ascending]:\n";
+echo "ksort() [Berdasarkan Nama/Key Ascending]:<br>";
 print_r($ksort_key);
 
-echo "arsort() [Berdasarkan Nilai Descending]:\n";
+echo "arsort() [Berdasarkan Nilai Descending]:<br>";
 print_r($arsort_val);
 
-echo "krsort() [Berdasarkan Nama/Key Descending]:\n";
+echo "krsort() [Berdasarkan Nama/Key Descending]:<br>";
 print_r($krsort_key);
