@@ -1,6 +1,6 @@
 <?php
-include 'cek_owner.php';
-include 'koneksi.php';
+include __DIR__ . '/../auth/cek_owner.php';
+include __DIR__ . '/../layout/koneksi.php';
 
 $aksi  = $_GET['aksi'] ?? 'list';
 $id    = (int) ($_GET['id'] ?? 0);
@@ -96,7 +96,7 @@ $result = mysqli_query($conn, "SELECT b.*, s.nama AS nama_supplier
 $suppliers = mysqli_query($conn, "SELECT id, nama FROM supplier ORDER BY nama ASC");
 
 $judul = "Data Barang";
-include 'header.php';
+include __DIR__ . '/../layout/header.php';
 ?>
 
 <?php if (!empty($_GET['pesan'])) : ?>
@@ -247,4 +247,4 @@ include 'header.php';
     </table>
 <?php endif; ?>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../layout/footer.php'; ?>

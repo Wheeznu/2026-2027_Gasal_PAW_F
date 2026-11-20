@@ -1,6 +1,6 @@
 <?php
-include 'cek_login.php';
-include 'koneksi.php';
+include __DIR__ . '/../auth/cek_login.php';
+include __DIR__ . '/../layout/koneksi.php';
 
 $tanggal_mulai   = trim($_GET['tanggal_mulai'] ?? '');
 $tanggal_selesai = trim($_GET['tanggal_selesai'] ?? '');

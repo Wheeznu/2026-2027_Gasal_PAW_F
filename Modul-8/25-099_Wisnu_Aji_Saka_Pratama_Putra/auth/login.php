@@ -1,10 +1,10 @@
 <?php
 session_start();
-include 'koneksi.php';
+include __DIR__ . '/../layout/koneksi.php';
 
 // Kalau sudah login, user tidak boleh membuka halaman login lagi.
 if (isset($_SESSION['id_user'])) {
-    header("Location: index.php");
+    header("Location: ../layout/index.php");
     exit;
 }
 
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['nama']     = $user['nama'];
             $_SESSION['level']    = $user['level'];
 
-            header("Location: index.php");
+            header("Location: ../layout/index.php");
             exit;
         } else {
             $error = "Username atau password salah.";
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sistem Penjualan</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="login-page">

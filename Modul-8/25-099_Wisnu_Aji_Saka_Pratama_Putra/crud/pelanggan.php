@@ -1,6 +1,6 @@
 <?php
-include 'cek_owner.php';
-include 'koneksi.php';
+include __DIR__ . '/../auth/cek_owner.php';
+include __DIR__ . '/../layout/koneksi.php';
 
 // Membuat ID pelanggan otomatis, contoh: PLG006
 function buat_id_pelanggan($conn)
@@ -93,7 +93,7 @@ if ($aksi === 'edit' && $id !== '') {
 $result = mysqli_query($conn, "SELECT * FROM pelanggan ORDER BY id ASC");
 
 $judul = "Data Pelanggan";
-include 'header.php';
+include __DIR__ . '/../layout/header.php';
 ?>
 
 <?php if (!empty($_GET['pesan'])) : ?>
@@ -230,4 +230,4 @@ include 'header.php';
     </table>
 <?php endif; ?>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../layout/footer.php'; ?>

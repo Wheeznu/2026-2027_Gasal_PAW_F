@@ -1,6 +1,6 @@
 <?php
-include 'cek_login.php';
-include 'koneksi.php';
+include __DIR__ . '/../auth/cek_login.php';
+include __DIR__ . '/../layout/koneksi.php';
 
 $transaksi_id = (int) ($_GET['transaksi_id'] ?? 0);
 $error        = "";
@@ -104,7 +104,7 @@ $all_barang = mysqli_query($conn, "SELECT id, kode_barang, nama_barang, harga
 $total_barang = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS jumlah FROM barang"))['jumlah'];
 
 $judul = "Detail Transaksi";
-include 'header.php';
+include __DIR__ . '/../layout/header.php';
 ?>
 
 <?php if (!empty($_GET['pesan'])) : ?>
@@ -194,4 +194,4 @@ include 'header.php';
     <a href="transaksi.php" class="btn btn-kembali">Kembali ke Transaksi</a>
 </p>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../layout/footer.php'; ?>

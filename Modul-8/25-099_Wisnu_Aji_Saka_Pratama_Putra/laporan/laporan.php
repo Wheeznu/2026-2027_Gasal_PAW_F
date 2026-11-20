@@ -1,6 +1,6 @@
 <?php
-include 'cek_login.php';
-include 'koneksi.php';
+include __DIR__ . '/../auth/cek_login.php';
+include __DIR__ . '/../layout/koneksi.php';
 
 $tanggal_mulai   = trim($_GET['tanggal_mulai'] ?? '');
 $tanggal_selesai = trim($_GET['tanggal_selesai'] ?? '');
@@ -49,7 +49,7 @@ if ($error === "") {
 }
 
 $judul = "Laporan Penjualan";
-include 'header.php';
+include __DIR__ . '/../layout/header.php';
 ?>
 
 <h1>Laporan Penjualan</h1>
@@ -169,4 +169,4 @@ include 'header.php';
     </script>
 <?php endif; ?>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../layout/footer.php'; ?>
