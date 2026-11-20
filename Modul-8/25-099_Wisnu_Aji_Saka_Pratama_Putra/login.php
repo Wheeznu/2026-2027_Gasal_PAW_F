@@ -2,6 +2,15 @@
 session_start();
 include 'koneksi.php';
 
+// ===== LOGOUT =====
+// Logout ditangani di halaman login supaya tidak perlu file terpisah.
+if (isset($_GET['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php?pesan=logout");
+    exit;
+}
+
 // Kalau sudah login, user tidak boleh membuka halaman login lagi.
 if (isset($_SESSION['id_user'])) {
     header("Location: index.php");
@@ -75,6 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
+
+                <?php if (($_GET['pesan'] ?? '') === 'logout') : ?>
+                    <div class="alert alert-success mt-3 mb-0">Anda berhasil logout.</div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

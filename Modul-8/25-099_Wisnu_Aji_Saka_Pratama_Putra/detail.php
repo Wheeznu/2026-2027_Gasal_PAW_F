@@ -104,7 +104,8 @@ $all_barang = mysqli_query($conn, "SELECT id, kode_barang, nama_barang, harga
 $total_barang = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS jumlah FROM barang"))['jumlah'];
 
 $judul = "Detail Transaksi";
-include 'header.php';
+include 'layout.php';
+tampil_header($judul);
 ?>
 
 <?php if (!empty($_GET['pesan'])) : ?>
@@ -213,4 +214,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php tampil_footer(); ?>

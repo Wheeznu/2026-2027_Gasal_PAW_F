@@ -49,7 +49,8 @@ if ($error === "") {
 }
 
 $judul = "Laporan Penjualan";
-include 'header.php';
+include 'layout.php';
+tampil_header($judul);
 ?>
 
 <h1 class="h3 mb-3">Laporan Penjualan</h1>
@@ -190,4 +191,4 @@ include 'header.php';
     </script>
 <?php endif; ?>
 
-<?php include 'footer.php'; ?>
+<?php tampil_footer(); ?>

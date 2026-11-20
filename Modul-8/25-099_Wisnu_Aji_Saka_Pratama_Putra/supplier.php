@@ -1,5 +1,6 @@
 <?php
-include 'cek_owner.php';
+$wajib_owner = true;
+include 'cek_login.php';
 include 'koneksi.php';
 
 $aksi  = $_GET['aksi'] ?? 'list';
@@ -72,7 +73,8 @@ if ($aksi === 'edit' && $id > 0) {
 $result = mysqli_query($conn, "SELECT * FROM supplier ORDER BY id ASC");
 
 $judul = "Data Supplier";
-include 'header.php';
+include 'layout.php';
+tampil_header($judul);
 ?>
 
 <?php if (!empty($_GET['pesan'])) : ?>
@@ -197,4 +199,4 @@ include 'header.php';
     </div>
 <?php endif; ?>
 
-<?php include 'footer.php'; ?>
+<?php tampil_footer(); ?>

@@ -2,7 +2,8 @@
 include 'cek_login.php';
 
 $judul = "Home";
-include 'header.php';
+include 'layout.php';
+tampil_header($judul);
 ?>
 
 <div class="row justify-content-center">
@@ -34,4 +35,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php tampil_footer(); ?>

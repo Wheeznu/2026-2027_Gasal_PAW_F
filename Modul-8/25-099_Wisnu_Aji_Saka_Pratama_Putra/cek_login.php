@@ -8,4 +8,11 @@ if (!isset($_SESSION['id_user'])) {
     header("Location: login.php");
     exit;
 }
+
+// Halaman boleh menandai $wajib_owner = true sebelum include file ini
+// agar hanya user level 1 (owner) yang bisa mengaksesnya.
+if (!empty($wajib_owner) && $_SESSION['level'] != 1) {
+    header("Location: index.php");
+    exit;
+}
 ?>

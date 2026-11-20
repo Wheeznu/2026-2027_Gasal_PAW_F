@@ -1,9 +1,9 @@
 <?php
-// Variabel $judul diisi di halaman sebelum memanggil header ini.
-if (!isset($judul)) {
-    $judul = "Sistem Penjualan";
-}
-?>
+// Partial layout: navbar + pembuka HTML dan penutup halaman.
+
+function tampil_header($judul = "Sistem Penjualan")
+{
+    ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -50,10 +50,23 @@ if (!isset($judul)) {
                         <?= htmlspecialchars($_SESSION['nama']); ?>
                         (<?= $_SESSION['level'] == 1 ? 'Owner' : 'Kasir'; ?>)
                     </span>
-                    <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                    <a href="login.php?logout=1" class="btn btn-outline-light btn-sm">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="container my-4">
+    <?php
+}
+
+function tampil_footer()
+{
+    ?>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+    <?php
+}

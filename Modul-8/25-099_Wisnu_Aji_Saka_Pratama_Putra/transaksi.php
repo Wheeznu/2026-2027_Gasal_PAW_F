@@ -71,7 +71,8 @@ $result = mysqli_query($conn, "SELECT t.*, p.nama AS nama_pelanggan
 $pelanggan_list = mysqli_query($conn, "SELECT id, nama FROM pelanggan ORDER BY nama ASC");
 
 $judul = "Data Transaksi";
-include 'header.php';
+include 'layout.php';
+tampil_header($judul);
 ?>
 
 <?php if (!empty($_GET['pesan'])) : ?>
@@ -210,4 +211,4 @@ include 'header.php';
     </div>
 <?php endif; ?>
 
-<?php include 'footer.php'; ?>
+<?php tampil_footer(); ?>
