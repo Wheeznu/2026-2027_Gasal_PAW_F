@@ -1,9 +1,9 @@
 <?php
 // Data master hanya boleh dibuka oleh user level 1 (owner).
-include __DIR__ . '/cek_login.php';
+include 'cek_login.php';
 
 if ($_SESSION['level'] != 1) {
-    header("Location: ../layout/index.php");
+    header("Location: index.php");
     exit;
 }
 ?>

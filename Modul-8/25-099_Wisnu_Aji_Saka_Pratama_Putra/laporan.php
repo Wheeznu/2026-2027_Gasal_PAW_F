@@ -1,6 +1,6 @@
 <?php
-include __DIR__ . '/../auth/cek_login.php';
-include __DIR__ . '/../layout/koneksi.php';
+include 'cek_login.php';
+include 'koneksi.php';
 
 $tanggal_mulai   = trim($_GET['tanggal_mulai'] ?? '');
 $tanggal_selesai = trim($_GET['tanggal_selesai'] ?? '');
@@ -49,82 +49,103 @@ if ($error === "") {
 }
 
 $judul = "Laporan Penjualan";
-include __DIR__ . '/../layout/header.php';
+include 'header.php';
 ?>
 
-<h1>Laporan Penjualan</h1>
+<h1 class="h3 mb-3">Laporan Penjualan</h1>
 
 <?php if ($error !== "") : ?>
     <div class="alert alert-danger"><?= htmlspecialchars($error); ?></div>
 <?php endif; ?>
 
-<form method="GET" action="laporan.php" class="filter-form no-print">
-    <div class="form-group">
-        <label for="tanggal_mulai">Tanggal Mulai</label>
-        <input type="date" id="tanggal_mulai" name="tanggal_mulai"
-               value="<?= htmlspecialchars($tanggal_mulai); ?>">
-    </div>
+<div class="card shadow-sm mb-4 d-print-none">
+    <div class="card-body">
+        <form method="GET" action="laporan.php" class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
+                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai"
+                       value="<?= htmlspecialchars($tanggal_mulai); ?>">
+            </div>
 
-    <div class="form-group">
-        <label for="tanggal_selesai">Tanggal Selesai</label>
-        <input type="date" id="tanggal_selesai" name="tanggal_selesai"
-               value="<?= htmlspecialchars($tanggal_selesai); ?>">
-    </div>
+            <div class="col-md-4">
+                <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
+                <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai"
+                       value="<?= htmlspecialchars($tanggal_selesai); ?>">
+            </div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Tampilkan</button>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Tampilkan</button>
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
 <?php if (count($rows) > 0) : ?>
-    <div class="actions no-print">
-        <button type="button" class="btn" onclick="window.print()">Cetak</button>
-        <a class="btn" href="export_excel.php?tanggal_mulai=<?= urlencode($tanggal_mulai); ?>&tanggal_selesai=<?= urlencode($tanggal_selesai); ?>">Export Excel</a>
+    <div class="mb-3 d-print-none">
+        <button type="button" class="btn btn-secondary" onclick="window.print()">Cetak</button>
+        <a class="btn btn-success" href="export_excel.php?tanggal_mulai=<?= urlencode($tanggal_mulai); ?>&tanggal_selesai=<?= urlencode($tanggal_selesai); ?>">Export Excel</a>
     </div>
 
-    <h2>Tren Pendapatan Harian</h2>
-    <canvas id="chartPendapatan"></canvas>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h2 class="h5 mb-3">Tren Pendapatan Harian</h2>
+            <canvas id="chartPendapatan"></canvas>
+        </div>
+    </div>
 <?php endif; ?>
 
-<h2>Rekapitulasi Penjualan Harian</h2>
+<h2 class="h4 mb-3">Rekapitulasi Penjualan Harian</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Tanggal Transaksi</th>
-            <th>Total Pendapatan</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (count($rows) > 0) : ?>
-            <?php foreach ($rows as $i => $row) : ?>
+<div class="card shadow-sm mb-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover align-middle mb-0">
+            <thead class="table-light">
                 <tr>
-                    <td><?= $i + 1; ?></td>
-                    <td><?= htmlspecialchars($row['waktu_transaksi']); ?></td>
-                    <td>Rp <?= number_format($row['total_pendapatan'], 0, ',', '.'); ?></td>
+                    <th>No</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Total Pendapatan</th>
                 </tr>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <tr>
-                <td colspan="3">Tidak ada data pada rentang tanggal ini.</td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+                <?php if (count($rows) > 0) : ?>
+                    <?php foreach ($rows as $i => $row) : ?>
+                        <tr>
+                            <td><?= $i + 1; ?></td>
+                            <td><?= htmlspecialchars($row['waktu_transaksi']); ?></td>
+                            <td>Rp <?= number_format($row['total_pendapatan'], 0, ',', '.'); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">Tidak ada data pada rentang tanggal ini.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<h2>Ringkasan</h2>
+<h2 class="h4 mb-3">Ringkasan</h2>
 
-<table>
-    <tr>
-        <th>Jumlah Pelanggan Unik</th>
-        <td><?= $jumlah_pelanggan; ?></td>
-    </tr>
-    <tr>
-        <th>Total Pendapatan</th>
-        <td>Rp <?= number_format($total_pendapatan, 0, ',', '.'); ?></td>
-    </tr>
-</table>
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-start border-primary border-4">
+            <div class="card-body">
+                <div class="text-muted small">Jumlah Pelanggan Unik</div>
+                <div class="h4 mb-0"><?= $jumlah_pelanggan; ?></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm border-start border-success border-4">
+            <div class="card-body">
+                <div class="text-muted small">Total Pendapatan</div>
+                <div class="h4 mb-0">Rp <?= number_format($total_pendapatan, 0, ',', '.'); ?></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php if (count($rows) > 0) : ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -169,4 +190,4 @@ include __DIR__ . '/../layout/header.php';
     </script>
 <?php endif; ?>
 
-<?php include __DIR__ . '/../layout/footer.php'; ?>
+<?php include 'footer.php'; ?>

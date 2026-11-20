@@ -37,47 +37,41 @@ Website sederhana "Sistem Penjualan" dengan login, session, hak akses, dan logou
      ```
 3. Letakkan folder ini di dalam `htdocs`, lalu buka:
    ```
-   http://localhost/Modul-8/25-099_Wisnu_Aji_Saka_Pratama_Putra/auth/login.php
+   http://localhost/Modul-8/25-099_Wisnu_Aji_Saka_Pratama_Putra/login.php
    ```
    Bisa juga menjalankan PHP built-in server dari folder ini:
    ```bash
    php -S localhost:8000
    ```
-   lalu buka `http://localhost:8000/auth/login.php`.
-4. Login menggunakan akun demo di atas. Setelah login, Anda akan diarahkan ke halaman Home (`layout/index.php`).
+   lalu buka `http://localhost:8000/login.php`.
+4. Login menggunakan akun demo di atas.
 
 ## Struktur File
 
 ```
 .
-├── auth/
-│   ├── login.php       # Halaman dan proses login
-│   ├── logout.php      # Proses logout
-│   ├── cek_login.php   # Pengecekan session untuk semua halaman
-│   └── cek_owner.php   # Pengecekan level 1 untuk Data Master
-├── crud/
-│   ├── barang.php      # CRUD data barang
-│   ├── supplier.php    # CRUD data supplier
-│   ├── pelanggan.php   # CRUD data pelanggan
-│   └── user.php        # CRUD data user
-├── transaksi/
-│   ├── transaksi.php   # CRUD transaksi
-│   └── detail.php      # Detail item transaksi
-├── laporan/
-│   ├── laporan.php     # Laporan penjualan
-│   └── export_excel.php # Export laporan ke Excel
-├── layout/
-│   ├── header.php      # Navbar dan pembuka HTML
-│   ├── footer.php      # Penutup HTML
-│   ├── index.php       # Home
-│   └── koneksi.php     # Koneksi database
-├── style.css           # CSS sederhana untuk merapikan tampilan
-├── database.sql        # Struktur dan data awal database
-└── README.md
+├── cek_login.php       # Pengecekan session untuk semua halaman
+├── cek_owner.php       # Pengecekan level 1 untuk Data Master
+├── header.php          # Navbar dan pembuka HTML
+├── footer.php          # Penutup HTML
+├── koneksi.php         # Koneksi database
+├── login.php           # Halaman dan proses login
+├── logout.php          # Proses logout
+├── index.php           # Home
+├── barang.php          # CRUD data barang
+├── supplier.php        # CRUD data supplier
+├── pelanggan.php       # CRUD data pelanggan
+├── user.php            # CRUD data user
+├── transaksi.php       # CRUD transaksi
+├── detail.php          # Detail item transaksi
+├── laporan.php         # Laporan penjualan
+├── export_excel.php    # Export laporan ke Excel
+└── database.sql        # Struktur dan data awal database
 ```
 
 ## Catatan
 
+- Tampilan menggunakan **Bootstrap 5** melalui CDN, sehingga membutuhkan koneksi internet saat halaman dibuka.
 - Password disimpan menggunakan `md5` karena mengikuti materi praktikum. Untuk aplikasi produksi sebaiknya menggunakan `password_hash()` dan `password_verify()`.
 - Nama database yang dipakai adalah `db_penjualan_8`. Jika ingin mengganti nama database, ubah bagian `mysqli_connect()` di `koneksi.php`.
 - Jika MySQL menggunakan password, sesuaikan juga parameter password pada `koneksi.php`.
